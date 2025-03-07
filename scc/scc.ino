@@ -10,8 +10,17 @@ void setup() {
   Serial.begin(9600); // delete before deployment
   Serial.println("STARTTING...");
 
+  pinMode(START, INPUT);
   pinMode(DipSwitch1, INPUT);
   pinMode(DipSwitch3, INPUT);
+
+  pinMode(RIGHT_LINE_SENSOR, INPUT);
+  pinMode(LEFT_LINE_SENSOR, INPUT);
+  pinMode(LONG_IR, INPUT);
+  pinMode(SHORT_IR, INPUT);
+
+  attachInterrupt(digitalPinToInterrupt(RIGHT_LINE_SENSOR), rightSensorISR, RISING);
+  attachInterrupt(digitalPinToInterrupt(LEFT_LINE_SENSOR), leftSensorISR, RISING);
 
   mode = digitalRead(DipSwitch1) + 2 * digitalRead(DipSwitch3);
 
@@ -55,6 +64,15 @@ void unexpectedResponse() {
     avoid();
 }
 
+
+void leftSensorISR() {
+
+}
+
+
+void rightSensorISR() {
+
+}
 
 
 
