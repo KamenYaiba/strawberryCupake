@@ -34,20 +34,38 @@ void setup() {
     default: Serial.println("ERROR: No mode selected");
   }
 
+  //if(mode == DEFENSIVE)
+    //moveToSide();
+
   
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  while(!digitalRead(START)); //busy waiting
+  if(!digitalRead(LONG_IR))
+    search();
+  
+  if(mode == OFFENSIVE)
+    approach();
+  if(digitalRead(SHORT_IR))
+    reactionToDetection();
 
 }
 
 
 
+void search() {
+
+}
+
+void approach() {
+
+}
+
 
 void attack() {
-
+  xmotion.Forward(100, 1);
 }
 
 
