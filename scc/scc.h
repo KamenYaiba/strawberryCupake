@@ -1,8 +1,9 @@
 
 //circuit
 #define START A0
-#define DipSwitch1 5
-#define DipSwitch3 7
+#define DIPSWITCH1 5
+#define DIPSWITCH2 6
+#define DIPSWITCH3 7
 
 #define RIGHT_LINE_SENSOR 0
 #define LEFT_LINE_SENSOR 1
@@ -17,3 +18,7 @@
 #define OFFENSIVE 1
 #define DEFENSIVE 2
 #define RANDOM 3
+
+
+//configure
+#define AGGRESSION_LEVEL 2
