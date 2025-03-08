@@ -15,10 +15,9 @@
 
 
 //custom
-#define OFFENSIVE 1
-#define DEFENSIVE 2
-#define RANDOM 3
+#define OFFENSIVE 0
+#define RANDOM 1
 
 
 //configure
-#define AGGRESSION_LEVEL 2
+#define SPECIAL_MOVE_PROBABILITY 2
