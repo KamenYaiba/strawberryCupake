@@ -36,17 +36,17 @@ void loop() {
         changeState(LOCKED_IN);
       }
 
-      elif(digitalRead(LEFT_S)) {
+      else if(digitalRead(LEFT_S)) {
         rotate(degrees(90), LEFT);
         changeState(ROTATING);
       }
 
-      elif(digitalRead(RIGHT_S)) {
+      else if(digitalRead(RIGHT_S)) {
         rotate(degrees(90), RIGHT);
         changeState(ROTATING);
       }
 
-      elif(digitalRead(REAR_S)) {
+      else if(digitalRead(REAR_S)) {
         rotate(180, RIGHT);
         changeState(ROTATING);
 
@@ -62,16 +62,34 @@ void loop() {
       break;
 
   case LOCKED_IN:
+    if(getDistance() < PUSH_THRESHOLD) {
+      xmotion.Forward(100, 0);
+      changeState(PUSHING);
+    }
+    else if(!digitalRead(SEARCH_S)) {
+      changeState(QUICK_SEARCHING);
+    }
+    else if(getDistance() < APPROACH_THRESHOLD) {
+      xmotion.Forward(50, 0);
+      changeState(APPROACHING);
+    }
       break;
+
   case APPROACHING:
+    if(getDistance() < PUSHING_THRESHOLD) {
+      xmotion.Forward(100, 0);
+      changeState(PUSHING);
+    }
       break;
+
   case SIDE_ATTACKING:
       break;
+
   case PUSHING:
       break;
 
   case ROTATING:
-    if(millis() - lastUpdate > timer) {
+    if(getTimeElapsed() > timer) {
       xmotion.StopMotors(0);
       changeState(QUICK_SEARCHING);
     }
@@ -97,7 +115,9 @@ void changeState(State s) {
 
 
 
-
+inline unsigned long getTimeElapsed() {
+    return millis() - lastUpdate;
+}
 
 
 

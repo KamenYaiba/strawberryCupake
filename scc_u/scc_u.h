@@ -23,6 +23,8 @@
 
 #define RIGHT 0
 #define LEFT 1
+#define PUSHING_THRESHOLD (45)
+#define APPROACH_THRESHOLD (70)
 
 
 #endif
@@ -39,8 +41,6 @@ enum State {
   ROTATING,
   EVADING
 };
-
-
 
 
 
