@@ -1,6 +1,6 @@
 // Define pins for the HC-SR04
-const int trigPin = 4;
-const int echoPin = 2;
+const int trigPin = A1;
+const int echoPin = 3;
 
 // Variables to hold distance and duration
 long duration;
@@ -11,10 +11,9 @@ void setup() {
   Serial.begin(9600);
 
   // Set the trigPin as an output and echoPin as an input
-  //pinMode(trigPin, OUTPUT);
-  //pinMode(echoPin, INPUT);
-  pinMode(4, INPUT);
-  while(1);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(0, INPUT);
 }
 
 void loop() {
