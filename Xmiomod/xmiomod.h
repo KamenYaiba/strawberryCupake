@@ -9,7 +9,7 @@
 
 void x_forward(int speed);
 void x_backward(int speed);
-void x_ight0(int speed);
+void x_right0(int speed);
 void x_left0(int speed);
 void x_stopMotors();
 void x_arcTurn(int LeftSpeed, int RightSpeed);
