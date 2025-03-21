@@ -1,8 +1,8 @@
+#include <xmiomod.h>
+
+
 #ifndef SCC_U_H
 #define SCC_U_H
-
-
-#include <xmotionV3.h>
 
 
 #define degrees(x) ((x) / (6.0))
@@ -23,11 +23,24 @@
 
 #define RIGHT 0
 #define LEFT 1
-#define PUSHING_THRESHOLD (45)
+
+#define DS_TIMEOUT (5988)
+#define PUSH_THRESHOLD (30)
 #define APPROACH_THRESHOLD (70)
+#define SIDE_ATTK_THRESHOLD (45)
 
 
-#endif
+#define DEGREES_180 10
+#define DEGREES_90 5
+#define DEGREES_120 7
+#define EVADING_TIME 10
+
+#define SEARCH_TIMOUT 100
+#define SIDE_ATTK_TIMEOUT 100
+
+
+
+
 
 
 enum State {
@@ -44,6 +57,6 @@ enum State {
 
 
 
-
+#endif
 
 
