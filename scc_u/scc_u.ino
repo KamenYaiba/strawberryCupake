@@ -7,6 +7,16 @@ bool safetyON = true;
 uint32_t distance;
 
 
+char *snames[] = {"IDLE",
+  "QUICK_SEARCHING",
+  "SEARCHING",
+  "LOCKED_IN",
+  "APPROACHING",
+  "SIDE_ATTACKING",
+  "PUSHING",
+  "ROTATING",
+  "EVADING"};
+
 void setup() {
   pinMode(EDGE_S_L, INPUT);
   pinMode(EDGE_S_R, INPUT);
@@ -20,9 +30,15 @@ void setup() {
   pinMode(SEARCH_S, INPUT);
   pinMode(DISTANCE_S_T, INPUT);
   pinMode(DISTANCE_S_E, INPUT);
+  pinMode(RM_DIR, OUTPUT);
+  pinMode(RM_PWM, OUTPUT);
+  pinMode(LM_DIR, OUTPUT);
+  pinMode(LM_PWM, OUTPUT);
 
-  delay(4900);
-  if(digitalRead(SWITCH_180))
+  //delay(4900);
+  //if(digitalRead(SWITCH_180))
+  Serial.begin(9600);
+
 
 
   state = QUICK_SEARCHING;
@@ -100,9 +116,9 @@ void loop() {
       x_stopMotors();
       changeState(LOCKED_IN);
     }
-    else if(getTimeElapsed() > SEARCH_TIMOUT) {
-      \\TODO: this
-    }
+    //else if(getTimeElapsed() > SEARCH_TIMOUT) {
+      //TODO: this
+    //}
       break;
 
 
@@ -184,6 +200,8 @@ void loop() {
 
   }
 
+  Serial.println(snames[state]);
+
 }
 
 
@@ -212,6 +230,10 @@ int getDistance() {
   
   // 58.3 us = 1 cm
   distance = pulseIn(DISTANCE_S_E, HIGH, DS_TIMEOUT);
+  if(distance)
+    return distance;
+
+  return NOT_FOUND
 } 
 
 
