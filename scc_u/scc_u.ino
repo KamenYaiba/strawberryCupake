@@ -246,29 +246,51 @@ void rotate(byte direction, uint32_t degrees) {
 
 
 void debugDelta() {
-  Serial.println("State: " + String(snames[state]) +
-               " | Search IR: " + String(digitalRead(SEARCH_S)) +
-               " | Edge Left: " + String(digitalRead(EDGE_S_L)) +
-               " | Edge Right: " + String(digitalRead(EDGE_S_R)) +
-               " | Rear IR: " + String(digitalRead(REAR_S)) +
-               " | Left IR: " + String(digitalRead(LEFT_S)) +
-               " | Right IR: " + String(digitalRead(RIGHT_S)) +
-               " | Ultrasonic Sensor: " + String(distance));
-
+  char buffer[150];
+  snprintf(buffer, sizeof(buffer),
+           "State: %s | "
+           "Search IR: %d | "
+           "Edge Left: %d | "
+           "Edge Right: %d | "
+           "Rear IR: %d | "
+           "Left IR: %d | "
+           "Right IR: %d | "
+           "Ultrasonic Sensor: %d",
+           snames[state], 
+           digitalRead(SEARCH_S), 
+           digitalRead(EDGE_S_L), 
+           digitalRead(EDGE_S_R), 
+           digitalRead(REAR_S), 
+           digitalRead(LEFT_S), 
+           digitalRead(RIGHT_S), 
+           distance);
+           
+  Serial.println(buffer);
   delay(50);
 }
 
 
 void debug() {
-  Serial.println("State: " + String(snames[state]) +
-               "\nSearch IR: " + String(digitalRead(SEARCH_S)) +
-               "\nEdge Left: " + String(digitalRead(EDGE_S_L)) +
-               "\nEdge Right: " + String(digitalRead(EDGE_S_R)) +
-               "\nRear IR: " + String(digitalRead(REAR_S)) +
-               "\nLeft IR: " + String(digitalRead(LEFT_S)) +
-               "\nRight IR: " + String(digitalRead(RIGHT_S)) +
-               "\nUltrasonic Sensor: " + String(distance));
+  char buffer[150];
+  snprintf(buffer, sizeof(buffer),
+           "State: %s\n"
+           "Search IR: %d\n"
+           "Edge Left: %d\n"
+           "Edge Right: %d\n"
+           "Rear IR: %d\n"
+           "Left IR: %d\n"
+           "Right IR: %d\n"
+           "Ultrasonic Sensor: %d",
+           snames[state], 
+           digitalRead(SEARCH_S), 
+           digitalRead(EDGE_S_L), 
+           digitalRead(EDGE_S_R), 
+           digitalRead(REAR_S), 
+           digitalRead(LEFT_S), 
+           digitalRead(RIGHT_S), 
+           distance);
 
+  Serial.println(buffer);
   delay(50);
 }
 
