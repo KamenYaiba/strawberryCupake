@@ -249,6 +249,8 @@ void debugDelta() {
   char buffer[150];
   snprintf(buffer, sizeof(buffer),
            "State: %s | "
+           "Right Motor Speed: %d | "
+           "Left Motor Speed %d |"
            "Search IR: %d | "
            "Edge Left: %d | "
            "Edge Right: %d | "
@@ -256,7 +258,9 @@ void debugDelta() {
            "Left IR: %d | "
            "Right IR: %d | "
            "Ultrasonic Sensor: %d",
-           snames[state], 
+           snames[state],
+           x_rightMotorSpeed_DEBUG(),
+           x_leftMotorSpeed_DEBUG(),
            digitalRead(SEARCH_S), 
            digitalRead(EDGE_S_L), 
            digitalRead(EDGE_S_R), 
@@ -274,6 +278,8 @@ void debug() {
   char buffer[150];
   snprintf(buffer, sizeof(buffer),
            "State: %s\n"
+           "Right Motor Speed: %d\n"
+           "Left Motor Speed %d\n"
            "Search IR: %d\n"
            "Edge Left: %d\n"
            "Edge Right: %d\n"
@@ -281,7 +287,9 @@ void debug() {
            "Left IR: %d\n"
            "Right IR: %d\n"
            "Ultrasonic Sensor: %d",
-           snames[state], 
+           snames[state],
+           x_rightMotorSpeed_DEBUG(),
+           x_leftMotorSpeed_DEBUG(),
            digitalRead(SEARCH_S), 
            digitalRead(EDGE_S_L), 
            digitalRead(EDGE_S_R), 
