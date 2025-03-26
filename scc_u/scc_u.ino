@@ -197,7 +197,7 @@ void loop() {
     default: break;
 
   }
-  getFrequency();
+  debug();
 }
   
 
@@ -248,16 +248,16 @@ void rotate(byte direction, uint32_t degrees) {
 void debugDelta() {
   char buffer[150];
   snprintf(buffer, sizeof(buffer),
-           "State: %s | "
-           "Right Motor Speed: %d | "
-           "Left Motor Speed %d |"
+           "%s | "
+           "Right Speed: %3d | "
+           "Left Speed %3d |"
            "Search IR: %d | "
            "Edge Left: %d | "
            "Edge Right: %d | "
            "Rear IR: %d | "
            "Left IR: %d | "
            "Right IR: %d | "
-           "Ultrasonic Sensor: %d",
+           "Ultrasonic Sensor: %4d",
            snames[state],
            x_rightMotorSpeed_DEBUG(),
            x_leftMotorSpeed_DEBUG(),
@@ -270,7 +270,6 @@ void debugDelta() {
            distance);
            
   Serial.println(buffer);
-  delay(50);
 }
 
 
@@ -278,8 +277,8 @@ void debug() {
   char buffer[150];
   snprintf(buffer, sizeof(buffer),
            "State: %s\n"
-           "Right Motor Speed: %d\n"
-           "Left Motor Speed %d\n"
+           "Right Speed: %d\n"
+           "Left Speed %d\n"
            "Search IR: %d\n"
            "Edge Left: %d\n"
            "Edge Right: %d\n"
@@ -299,7 +298,6 @@ void debug() {
            distance);
 
   Serial.println(buffer);
-  delay(50);
 }
 
 
